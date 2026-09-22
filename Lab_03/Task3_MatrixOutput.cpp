@@ -35,7 +35,6 @@ int main()
         cout << endl;
     }
 
-    // Calculate sum of Matrix A and B
     for (int i = 0; i < SIZE; i++)
         for (int j = 0; j < SIZE; j++)
             sum[i][j] = A[i][j] + B[i][j];
