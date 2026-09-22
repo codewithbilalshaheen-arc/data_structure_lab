@@ -17,7 +17,6 @@ int main()
         {70, 68, 74, 71}
     };
 
-    // 1. Display the complete marks table
     cout << "===== Student Marks Table =====" << endl;
     cout << "Student\t";
     for (int j = 0; j < SUBJECTS; j++)
@@ -34,7 +33,7 @@ int main()
         cout << endl;
     }
 
-    // 2. Total and 3. Average marks of each student
+    
     int total[STUDENTS] = {0};
     float average[STUDENTS] = {0};
 
@@ -49,10 +48,9 @@ int main()
         total[i] = sum;
         average[i] = (float)sum / SUBJECTS;
         cout << "Student " << (i + 1) << " -> Total: " << total[i]
-             << "\tAverage: " << average[i] << endl;
+            << "\tAverage: " << average[i] << endl;
     }
 
-    // 4. Highest marks in each subject
     cout << "\n===== Highest Marks in Each Subject =====" << endl;
     for (int j = 0; j < SUBJECTS; j++)
     {
@@ -67,10 +65,9 @@ int main()
             }
         }
         cout << subjectNames[j] << " -> Highest: " << highest
-             << " (Student " << (studentIndex + 1) << ")" << endl;
+            << " (Student " << (studentIndex + 1) << ")" << endl;
     }
 
-    // 5. Student with the highest total marks
     int maxTotal = total[0];
     int topStudent = 0;
     for (int i = 1; i < STUDENTS; i++)
@@ -84,7 +81,7 @@ int main()
 
     cout << "\n===== Top Student =====" << endl;
     cout << "Student " << (topStudent + 1) << " has the highest total marks: "
-         << maxTotal << endl;
+        << maxTotal << endl;
 
     return 0;
 }
