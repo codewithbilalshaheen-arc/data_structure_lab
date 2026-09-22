@@ -7,7 +7,6 @@ int main()
     const int SUBJECTS = 4;
     string subjectNames[SUBJECTS] = {"English", "Mathematics", "Programming", "AI"};
 
-    // 2D array to store marks of 6 students in 4 subjects
     int marks[STUDENTS][SUBJECTS] = {
         {78, 85, 90, 88},
         {65, 70, 60, 72},
