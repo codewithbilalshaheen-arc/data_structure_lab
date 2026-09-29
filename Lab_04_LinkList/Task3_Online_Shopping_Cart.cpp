@@ -1,11 +1,6 @@
-// Lab 04 - Linked Lists
-// Task 3: Online Shopping Cart (Singly Linked List)
-
 #include <iostream>
 #include <string>
 using namespace std;
-
-// A node stores one product's ID and a pointer to the next node
 struct Node {
     string productId;
     Node* next;
@@ -31,7 +26,6 @@ public:
         }
     }
 
-    // Add a product to the end of the cart
     void addProduct(const string& id) {
         Node* newNode = new Node(id);
 
@@ -46,7 +40,6 @@ public:
         current->next = newNode;
     }
 
-    // Display all products in the cart
     void display() const {
         if (head == nullptr) {
             cout << "Cart is empty.\n";
@@ -63,12 +56,10 @@ public:
         cout << "\n";
     }
 
-    // Remove a product using its Product ID
     bool removeProduct(const string& id) {
         if (head == nullptr)
             return false;
 
-        // Case 1: the product is the first node
         if (head->productId == id) {
             Node* temp = head;
             head = head->next;
@@ -76,13 +67,12 @@ public:
             return true;
         }
 
-        // Case 2: the product is somewhere after the first node
         Node* current = head;
         while (current->next != nullptr && current->next->productId != id)
             current = current->next;
 
         if (current->next == nullptr)
-            return false;               // not found
+            return false;
 
         Node* temp = current->next;
         current->next = temp->next;

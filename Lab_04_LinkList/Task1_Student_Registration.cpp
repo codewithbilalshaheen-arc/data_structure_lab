@@ -1,10 +1,5 @@
-// Lab 04 - Linked Lists
-// Task 1: Student Registration System (Singly Linked List)
-
 #include <iostream>
 using namespace std;
-
-// A node stores one student's roll number and a pointer to the next node
 struct Node {
     int rollNo;
     Node* next;
@@ -22,7 +17,6 @@ private:
 public:
     StudentList() { head = nullptr; }
 
-    // Free all nodes when the list is destroyed
     ~StudentList() {
         Node* current = head;
         while (current != nullptr) {
@@ -32,22 +26,20 @@ public:
         }
     }
 
-    // Add a new student at the END of the list
     void addStudent(int rollNo) {
         Node* newNode = new Node(rollNo);
 
-        if (head == nullptr) {          // list is empty
+        if (head == nullptr) {
             head = newNode;
             return;
         }
 
         Node* current = head;
-        while (current->next != nullptr) // walk to the last node
+        while (current->next != nullptr)
             current = current->next;
         current->next = newNode;
     }
 
-    // Display all registered students
     void display() const {
         if (head == nullptr) {
             cout << "No students registered yet.\n";
@@ -65,7 +57,6 @@ public:
         cout << "\n";
     }
 
-    // Search a student using the roll number
     bool search(int rollNo) const {
         Node* current = head;
         while (current != nullptr) {

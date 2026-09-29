@@ -1,11 +1,6 @@
-// Lab 04 - Linked Lists
-// Task 2: Hospital Patient Queue (Singly Linked List)
-
 #include <iostream>
 #include <string>
 using namespace std;
-
-// A node stores one patient's ID and a pointer to the next node
 struct Node {
     string patientId;
     Node* next;
@@ -31,7 +26,6 @@ public:
         }
     }
 
-    // Add a new patient at the END of the waiting list
     void addPatient(const string& id) {
         Node* newNode = new Node(id);
 
@@ -46,7 +40,6 @@ public:
         current->next = newNode;
     }
 
-    // Display all waiting patients
     void display() const {
         if (head == nullptr) {
             cout << "No patients are waiting.\n";
@@ -63,7 +56,6 @@ public:
         cout << "\n";
     }
 
-    // Remove the FIRST patient (the doctor attends this patient)
     void servePatient() {
         if (head == nullptr) {
             cout << "No patients to serve.\n";
