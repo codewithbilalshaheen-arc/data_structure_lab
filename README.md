@@ -33,15 +33,6 @@ data_structure_lab/
 │
 └── README.md
 ```
-
-## Labs and Topics
-
-| Lab    | Topic                             | Description                                                                                                                            |
-| ------ | --------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
-| Lab 02 | Arrays                            | Array input/output, insertion, deletion, searching, updating, multidimensional arrays, and dynamic arrays.                             |
-| Lab 03 | Arrays and Practical Applications | Student marks management, parking management, matrix output, hospital bed management, computer lab management, and 3D array searching. |
-| Lab 04 | Linked Lists                      | Singly linked list applications, including student registration, hospital patient queues, and online shopping cart management.         |
-
 ## Concepts Practiced
 
 * **Arrays:** Traversal, insertion, deletion, searching, and updating.
