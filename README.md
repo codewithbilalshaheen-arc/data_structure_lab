@@ -44,9 +44,11 @@ data_structure_lab/
 │   ├── Task3_Game_Player_Turns.cpp
 │   └── Task4_Music_Playlist.cpp
 │
-├── Lab_06_Stacks/
-│   ├── Task1_Stack_Array.cpp
-│   └── Task2_Stack_Linked_List.cpp
+├── Lab_06_stacks/
+│   ├── Task1_Browser_Back_History.cpp
+│   ├── Task2_Undo_Text_Editor.cpp
+│   ├── Task3_Hospital_Emergency_Requests.cpp
+│   └── Task4_Restaurant_Order_Processing.cpp
 │
 ├── Lab_XX_Topic/        (future labs follow the same pattern)
 │
@@ -139,22 +141,31 @@ Concepts practiced include:
 
 ### Lab 06 — Stacks
 
-This lab introduces the stack data structure, which follows the **LIFO (Last In, First Out)** principle. Stacks are implemented in two ways using C++ and OOP.
+This lab introduces the stack data structure, which follows the **LIFO (Last In, First Out)** principle. All programs are written in C++ using OOP and cover both array-based and linked-list-based stacks.
 
-Tasks include:
+Examples from the lab manual:
 
 * Stack using an Array
 * Stack using a Singly Linked List
+
+Tasks include:
+
+* Browser Back History (Array Stack)
+* Undo Operation in a Text Editor (Array Stack)
+* Hospital Patient Emergency Requests (Linked List Stack)
+* Restaurant Order Processing (Linked List Stack)
 
 Concepts practiced include:
 
 * LIFO principle
 * `push`, `pop`, `peek/top`, `display` and `isEmpty` operations
 * Stack Overflow and Stack Underflow handling
+* Displaying elements from TOP to bottom
 * Fixed-size (array) vs. dynamic (linked list) implementation
 * `top` index and `top` pointer
 * Dynamic memory allocation and deallocation (`new` / `delete`)
-* Real-world applications: browser back button, undo/redo, function call stack, parentheses matching, expression evaluation, backtracking
+* Destructors for freeing remaining nodes
+* Real-world applications: browser back button, undo/redo, emergency request handling, order processing
 
 ---
 
@@ -214,7 +225,7 @@ Concepts practiced include:
 * Stack using a singly linked list (`top` pointer)
 * `push`, `pop`, `peek`, `display` and `isEmpty` operations
 * Overflow and underflow conditions
-* Memory cleanup when popping nodes
+* Memory cleanup when popping nodes and in destructors
 
 ### C++ Programming
 
@@ -248,7 +259,9 @@ The assignments demonstrate how data structures can be applied to practical scen
 * Game player turns
 * Music playlists
 * Browser back button
-* Undo/redo operations
+* Undo operations in a text editor
+* Hospital emergency request handling
+* Restaurant order processing
 
 These applications help connect theoretical data-structure concepts with real programming problems.
 
@@ -311,7 +324,7 @@ g++ Lab_05_Doubly_LinkedList/Task1_Browser_History.cpp -o task.exe
 For example:
 
 ```powershell
-g++ Lab_06_Stacks/Task1_Stack_Array.cpp -o task.exe
+g++ Lab_06_stacks/Task1_Browser_Back_History.cpp -o task.exe
 .\task.exe
 ```
 
