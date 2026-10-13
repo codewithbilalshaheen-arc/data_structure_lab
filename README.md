@@ -10,17 +10,7 @@ All implementations in this repository are written in **C++** as part of my univ
 
 This repository contains programming tasks completed during Data Structures lab sessions. It focuses on implementing fundamental data structures and applying them to practical programming problems.
 
-The repository currently covers:
-
-* Arrays
-* Multidimensional arrays
-* Searching
-* Singly linked lists
-* Doubly linked lists
-* Pointers and dynamic memory
-* Practical data-structure-based applications
-
-Each lab is organized into a separate directory, with individual `.cpp` source files for each task.
+Each lab is organized into a separate directory, with individual `.cpp` source files for each task. New labs are added as the course progresses and follow the same structure.
 
 ---
 
@@ -54,10 +44,14 @@ data_structure_lab/
 │   ├── Task3_Game_Player_Turns.cpp
 │   └── Task4_Music_Playlist.cpp
 │
+├── Lab_06_Stacks/
+│   ├── Task1_Stack_Array.cpp
+│   └── Task2_Stack_Linked_List.cpp
+│
+├── Lab_XX_Topic/        (future labs follow the same pattern)
+│
 └── README.md
 ```
-
-> **Note:** The repository structure may be updated as new Data Structures lab assignments are completed.
 
 ---
 
@@ -143,6 +137,27 @@ Concepts practiced include:
 
 ---
 
+### Lab 06 — Stacks
+
+This lab introduces the stack data structure, which follows the **LIFO (Last In, First Out)** principle. Stacks are implemented in two ways using C++ and OOP.
+
+Tasks include:
+
+* Stack using an Array
+* Stack using a Singly Linked List
+
+Concepts practiced include:
+
+* LIFO principle
+* `push`, `pop`, `peek/top`, `display` and `isEmpty` operations
+* Stack Overflow and Stack Underflow handling
+* Fixed-size (array) vs. dynamic (linked list) implementation
+* `top` index and `top` pointer
+* Dynamic memory allocation and deallocation (`new` / `delete`)
+* Real-world applications: browser back button, undo/redo, function call stack, parentheses matching, expression evaluation, backtracking
+
+---
+
 ## Concepts Practiced
 
 ### Arrays
@@ -192,6 +207,15 @@ Concepts practiced include:
 * Dynamic memory management
 * Real-world applications
 
+### Stacks
+
+* LIFO (Last In, First Out) principle
+* Stack using an array (`top` index)
+* Stack using a singly linked list (`top` pointer)
+* `push`, `pop`, `peek`, `display` and `isEmpty` operations
+* Overflow and underflow conditions
+* Memory cleanup when popping nodes
+
 ### C++ Programming
 
 * Variables and data types
@@ -201,6 +225,7 @@ Concepts practiced include:
 * Arrays
 * Pointers
 * Structures/classes where applicable
+* Object-Oriented Programming (OOP)
 * Dynamic memory allocation
 * `new` and `delete`
 * Problem-solving
@@ -222,6 +247,8 @@ The assignments demonstrate how data structures can be applied to practical scen
 * Image galleries
 * Game player turns
 * Music playlists
+* Browser back button
+* Undo/redo operations
 
 These applications help connect theoretical data-structure concepts with real programming problems.
 
@@ -279,7 +306,16 @@ g++ Lab_05_Doubly_LinkedList/Task1_Browser_History.cpp -o task.exe
 .\task.exe
 ```
 
-> Replace the source filename with the `.cpp` file you want to compile and execute.
+### Lab 06 — Stacks
+
+For example:
+
+```powershell
+g++ Lab_06_Stacks/Task1_Stack_Array.cpp -o task.exe
+.\task.exe
+```
+
+> Replace the folder and source filename with the `.cpp` file you want to compile and execute. The same command pattern works for every lab.
 
 ---
 
@@ -302,8 +338,8 @@ The main objectives of this lab repository are to:
 
 * Understand the fundamentals of data structures.
 * Implement arrays and multidimensional arrays in C++.
-* Understand and implement singly linked lists.
-* Understand and implement doubly linked lists.
+* Understand and implement singly and doubly linked lists.
+* Understand and implement stacks using arrays and linked lists.
 * Learn how pointers are used in dynamic data structures.
 * Practice dynamic memory allocation and deallocation.
 * Develop logical thinking and problem-solving skills.
@@ -320,37 +356,6 @@ The main objectives of this lab repository are to:
 * **Development Environment:** Visual Studio Code
 * **Version Control:** Git
 * **Repository Hosting:** GitHub
-
----
-
-## Project Status
-
-This repository is **actively maintained** as part of my ongoing Data Structures coursework.
-
-| Lab    | Topic                                  | Status                  |
-| ------ | -------------------------------------- | ----------------------- |
-| Lab 02 | Arrays                                 | Completed / In Progress |
-| Lab 03 | Multidimensional Arrays & Applications | Completed               |
-| Lab 04 | Singly Linked Lists                    | Completed               |
-| Lab 05 | Doubly Linked Lists                    | Completed / In Progress |
-
-> The status may be updated as additional assignments are completed.
-
----
-
-## Future Additions
-
-As the Data Structures course progresses, this repository may include additional implementations covering topics such as:
-
-* More linked-list operations
-* Additional searching techniques
-* Stacks
-* Queues
-* Trees
-* Binary Search Trees
-* Heaps
-* Sorting algorithms
-* Other data-structure-based applications
 
 ---
 
