@@ -2,242 +2,142 @@
 #include <string>
 using namespace std;
 
-class StaffNode {
-public:
-    string name;
-    StaffNode* left;
-    StaffNode* right;
-
-    StaffNode(string n) {
-        name = n;
-        left = nullptr;
-        right = nullptr;
-    }
+struct StaffNode {
+    string name; StaffNode *left{}, *right{};
+    StaffNode(string n) : name(n) {}
 };
 
-void showStaff(StaffNode* node) {
-    if (node == nullptr) return;
-    cout << node->name << " -> Left: " << (node->left ? node->left->name : "NULL")
-         << ", Right: " << (node->right ? node->right->name : "NULL") << endl;
-    showStaff(node->left);
-    showStaff(node->right);
+void showStaff(StaffNode* n) {
+    if (!n) return;
+    cout << n->name << " -> Left: " << (n->left ? n->left->name : "NULL")
+         << ", Right: " << (n->right ? n->right->name : "NULL") << "\n";
+    showStaff(n->left); showStaff(n->right);
 }
 
-void showStaffInOrder(StaffNode* node) {
-    if (node == nullptr) return;
-    showStaffInOrder(node->left);
-    cout << node->name << " | ";
-    showStaffInOrder(node->right);
+void showStaffInOrder(StaffNode* n) {
+    if (!n) return;
+    showStaffInOrder(n->left); cout << n->name << " | "; showStaffInOrder(n->right);
 }
 
-void deleteStaff(StaffNode* node) {
-    if (node == nullptr) return;
-    deleteStaff(node->left);
-    deleteStaff(node->right);
-    delete node;
+void deleteStaff(StaffNode* n) {
+    if (!n) return;
+    deleteStaff(n->left); deleteStaff(n->right); delete n;
 }
 
-class BSTNode {
-public:
-    int id;
-    BSTNode* left;
-    BSTNode* right;
-
-    BSTNode(int value) {
-        id = value;
-        left = nullptr;
-        right = nullptr;
-    }
+struct BSTNode {
+    int id; BSTNode *left{}, *right{};
+    BSTNode(int v) : id(v) {}
 };
 
 class BST {
-private:
-    BSTNode* root;
+    BSTNode* root{};
 
-    BSTNode* insertHelper(BSTNode* node, int id, bool& added) {
-        if (node == nullptr) {
-            added = true;
-            return new BSTNode(id);
-        }
-        if (id < node->id)
-            node->left = insertHelper(node->left, id, added);
-        else if (id > node->id)
-            node->right = insertHelper(node->right, id, added);
-        return node;
+    BSTNode* insert(BSTNode* n, int id, bool& add) {
+        if (!n) return add = true, new BSTNode(id);
+        if (id < n->id) n->left = insert(n->left, id, add);
+        else if (id > n->id) n->right = insert(n->right, id, add);
+        return n;
     }
 
-    BSTNode* smallest(BSTNode* node) {
-        while (node->left != nullptr) node = node->left;
-        return node;
-    }
-
-    BSTNode* removeHelper(BSTNode* node, int id, bool& removed) {
-        if (node == nullptr) return nullptr;
-        if (id < node->id) {
-            node->left = removeHelper(node->left, id, removed);
-        } else if (id > node->id) {
-            node->right = removeHelper(node->right, id, removed);
-        } else {
-            removed = true;
-            if (node->left == nullptr) {
-                BSTNode* child = node->right;
-                delete node;
-                return child;
+    BSTNode* remove(BSTNode* n, int id, bool& rem) {
+        if (!n) return nullptr;
+        if (id < n->id) n->left = remove(n->left, id, rem);
+        else if (id > n->id) n->right = remove(n->right, id, rem);
+        else {
+            rem = true;
+            if (!n->left || !n->right) {
+                BSTNode* t = n->left ? n->left : n->right;
+                delete n; return t;
             }
-            if (node->right == nullptr) {
-                BSTNode* child = node->left;
-                delete node;
-                return child;
-            }
-            BSTNode* next = smallest(node->right);
-            node->id = next->id;
-            bool temp = false;
-            node->right = removeHelper(node->right, next->id, temp);
+            BSTNode* s = n->right;
+            while (s->left) s = s->left;
+            n->id = s->id;
+            bool dummy; n->right = remove(n->right, s->id, dummy);
         }
-        return node;
+        return n;
     }
 
-    void inOrderHelper(BSTNode* node) {
-        if (node == nullptr) return;
-        inOrderHelper(node->left);
-        cout << node->id << " ";
-        inOrderHelper(node->right);
+    void display(BSTNode* n) {
+        if (!n) return;
+        display(n->left); cout << n->id << " "; display(n->right);
     }
 
-    void destroy(BSTNode* node) {
-        if (node == nullptr) return;
-        destroy(node->left);
-        destroy(node->right);
-        delete node;
+    void destroy(BSTNode* n) {
+        if (!n) return;
+        destroy(n->left); destroy(n->right); delete n;
     }
 
 public:
-    BST() {
-        root = nullptr;
-    }
-
-    ~BST() {
-        destroy(root);
-    }
-
-    bool insert(int id) {
-        bool added = false;
-        root = insertHelper(root, id, added);
-        return added;
-    }
-
-    bool search(int id, int& visits) {
-        visits = 0;
-        BSTNode* current = root;
-        while (current != nullptr) {
-            visits++;
-            if (id == current->id) return true;
-            if (id < current->id) current = current->left;
-            else current = current->right;
+    ~BST() { destroy(root); }
+    bool insert(int id) { bool a = false; root = insert(root, id, a); return a; }
+    bool remove(int id) { bool r = false; root = remove(root, id, r); return r; }
+    
+    bool search(int id, int& v) {
+        v = 0;
+        for (auto c = root; c; v++) {
+            if (id == c->id) return true;
+            c = (id < c->id) ? c->left : c->right;
         }
         return false;
     }
 
-    bool remove(int id) {
-        bool removed = false;
-        root = removeHelper(root, id, removed);
-        return removed;
-    }
-
-    void display() {
-        inOrderHelper(root);
-        cout << endl;
-    }
+    void display() { display(root); cout << "\n"; }
 };
 
-void fillOriginal(BST& tree) {
-    int ids[] = {48, 28, 68, 18, 38, 58, 78};
-    for (int id : ids) tree.insert(id);
+void fillOriginal(BST& t) { for (int id : {48, 28, 68, 18, 38, 58, 78}) t.insert(id); }
+
+void searchAndShow(BST& t, int id) {
+    int v; bool f = t.search(id, v);
+    cout << "Search " << id << ": " << (f ? "Found" : "Not found") << ", node visits = " << v << "\n";
 }
 
-void searchAndShow(BST& tree, int id) {
-    int visits;
-    bool found = tree.search(id, visits);
-    cout << "Search " << id << ": " << (found ? "Found" : "Not found")
-         << ", node visits = " << visits << endl;
-}
-
-void testDeletion(string title, int firstRemove, int target) {
-    BST tree;
-    fillOriginal(tree);
-    if (firstRemove != -1) tree.remove(firstRemove);
-    cout << title << endl;
-    cout << "Before: ";
-    tree.display();
-    tree.remove(target);
-    cout << "After deleting " << target << ": ";
-    tree.display();
-    cout << endl;
+void testDeletion(string title, int fr, int target) {
+    BST t; fillOriginal(t);
+    if (fr != -1) t.remove(fr);
+    cout << title << "\nBefore: "; t.display();
+    t.remove(target);
+    cout << "After deleting " << target << ": "; t.display(); cout << "\n";
 }
 
 int main() {
-    cout << "--- General Binary Tree ---" << endl;
+    cout << "--- General Binary Tree ---\n";
     StaffNode* root = new StaffNode("Vice Chancellor");
-    root->left = new StaffNode("Dean");
-    root->right = new StaffNode("Registrar");
-    root->left->left = new StaffNode("HOD Computer Science");
-    root->left->right = new StaffNode("HOD Mathematics");
-    root->right->left = new StaffNode("Accountant");
-    root->right->right = new StaffNode("Librarian");
+    root->left = new StaffNode("Dean"); root->right = new StaffNode("Registrar");
+    root->left->left = new StaffNode("HOD Computer Science"); root->left->right = new StaffNode("HOD Mathematics");
+    root->right->left = new StaffNode("Accountant"); root->right->right = new StaffNode("Librarian");
 
     showStaff(root);
-    cout << "In-order of general tree: ";
-    showStaffInOrder(root);
-    cout << endl << endl;
+    cout << "In-order of general tree: "; showStaffInOrder(root); cout << "\n\n";
 
-    cout << "--- BST of Staff IDs ---" << endl;
-    BST tree;
-    fillOriginal(tree);
-    cout << "Initial IDs: ";
-    tree.display();
+    cout << "--- BST of Staff IDs ---\n";
+    BST tree; fillOriginal(tree);
+    cout << "Initial IDs: "; tree.display();
 
-    int count = 0;
-    while (count < 3) {
-        int id;
-        cout << "Enter a staff ID to insert: ";
-        cin >> id;
-        if (tree.insert(id)) {
-            cout << id << " inserted." << endl;
-            count++;
-        } else {
-            cout << id << " already exists. Duplicate rejected." << endl;
-        }
+    for (int count = 0, id; count < 3; ) {
+        cout << "Enter a staff ID to insert: "; cin >> id;
+        if (tree.insert(id)) { cout << id << " inserted.\n"; count++; }
+        else cout << id << " already exists. Duplicate rejected.\n";
     }
-    cout << "IDs now: ";
-    tree.display();
-    cout << endl;
+    cout << "IDs now: "; tree.display(); cout << "\n";
 
-    cout << "--- Search Tests ---" << endl;
-    searchAndShow(tree, 58);
-    searchAndShow(tree, 60);
-    searchAndShow(tree, 5);
-    cout << endl;
+    cout << "--- Search Tests ---\n";
+    searchAndShow(tree, 58); searchAndShow(tree, 60); searchAndShow(tree, 5); cout << "\n";
 
-    cout << "--- Deletion Tests (fresh BST each time) ---" << endl;
+    cout << "--- Deletion Tests (fresh BST each time) ---\n";
     testDeletion("Leaf node (18):", -1, 18);
     testDeletion("Node with one child (28 after removing 18):", 18, 28);
     testDeletion("Node with two children (48):", -1, 48);
 
-    int id;
-    cout << "Enter a staff ID to delete: ";
-    cin >> id;
-    if (tree.remove(id)) cout << id << " deleted." << endl;
-    else cout << id << " not found." << endl;
-    cout << "Remaining IDs in ascending order: ";
-    tree.display();
-    cout << endl;
+    int id; cout << "Enter a staff ID to delete: "; cin >> id;
+    if (tree.remove(id)) cout << id << " deleted.\n";
+    else cout << id << " not found.\n";
+    cout << "Remaining IDs in ascending order: "; tree.display(); cout << "\n";
 
-    cout << "--- Why In-order Differs ---" << endl;
-    cout << "In a general binary tree, nodes are linked in any order, so in-order traversal" << endl;
-    cout << "follows the tree shape and the output is not necessarily sorted." << endl;
-    cout << "In a BST, every left value is smaller and every right value is larger," << endl;
-    cout << "so in-order (left, node, right) always gives ascending order." << endl;
+    cout << "--- Why In-order Differs ---\n"
+         << "In a general binary tree, nodes are linked in any order, so in-order traversal\n"
+         << "follows the tree shape and the output is not necessarily sorted.\n"
+         << "In a BST, every left value is smaller and every right value is larger,\n"
+         << "so in-order (left, node, right) always gives ascending order.\n";
 
     deleteStaff(root);
-    return 0;
 }
