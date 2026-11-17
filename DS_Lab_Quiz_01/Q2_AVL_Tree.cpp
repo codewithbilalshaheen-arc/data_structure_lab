@@ -10,10 +10,11 @@ public:
 
     Node(int r) {
         regNo = r;
-        height = 1;          // leaf node has height 1
+        height = 1;
         left = right = nullptr;
     }
 };
+
 class AVLTree {
 private:
     Node* root;

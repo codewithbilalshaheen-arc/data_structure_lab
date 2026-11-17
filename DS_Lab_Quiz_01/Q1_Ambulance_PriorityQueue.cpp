@@ -7,7 +7,7 @@ class AmbulanceNode {
     public:
     int id;
     string patientName;
-    int priority;          // 1 = highest, 5 = lowest
+    int priority;
     AmbulanceNode* next;
 
     AmbulanceNode(int i, string name, int p) {
