@@ -3,7 +3,8 @@
 #include <limits>
 using namespace std;
 class AmbulanceNode {
-public:
+
+    public:
     int id;
     string patientName;
     int priority;          // 1 = highest, 5 = lowest
