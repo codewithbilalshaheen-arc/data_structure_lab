@@ -2,8 +2,6 @@
 #include <string>
 #include <limits>
 using namespace std;
-
-// ---------------- Node ----------------
 class AmbulanceNode {
 public:
     int id;
@@ -18,8 +16,6 @@ public:
         next = nullptr;
     }
 };
-
-// ---------------- Priority Queue (Singly Linked List) ----------------
 class AmbulanceQueue {
 private:
     AmbulanceNode* head;
@@ -42,8 +38,6 @@ public:
             if (c->id == id) return true;
         return false;
     }
-
-    // Insert by priority; equal priorities go AFTER existing ones (FIFO)
     void insertRequest(int id, string name, int priority) {
         if (priority < 1 || priority > 5) {
             cout << "Invalid priority! Must be between 1 and 5.\n";
@@ -60,17 +54,14 @@ public:
             head = n;
         } else {
             AmbulanceNode* cur = head;
-            // move past all nodes with priority <= new priority (keeps FIFO)
             while (cur->next != nullptr && cur->next->priority <= priority)
                 cur = cur->next;
             n->next = cur->next;
             cur->next = n;
         }
         cout << "Request added: ID " << id << ", Patient " << name
-             << ", Priority " << priority << "\n";
+            << ", Priority " << priority << "\n";
     }
-
-    // Process (remove) the highest-priority request
     void processRequest() {
         if (isEmpty()) {
             cout << "No pending ambulance requests (list is empty).\n";
@@ -79,11 +70,10 @@ public:
         AmbulanceNode* t = head;
         head = head->next;
         cout << "Processing -> ID: " << t->id << ", Patient: " << t->patientName
-             << ", Priority: " << t->priority << "\n";
+            << ", Priority: " << t->priority << "\n";
         delete t;
     }
 
-    // Display all pending requests in priority order
     void display() {
         if (isEmpty()) {
             cout << "No pending ambulance requests (list is empty).\n";
@@ -96,7 +86,6 @@ public:
         cout << "----------------------------------\n";
     }
 
-    // Search by ambulance ID
     void search(int id) {
         if (isEmpty()) {
             cout << "List is empty. Nothing to search.\n";
@@ -106,7 +95,7 @@ public:
         for (AmbulanceNode* c = head; c; c = c->next, pos++) {
             if (c->id == id) {
                 cout << "Found! ID: " << c->id << ", Patient: " << c->patientName
-                     << ", Priority: " << c->priority << ", Position in queue: " << pos << "\n";
+                    << ", Priority: " << c->priority << ", Position in queue: " << pos << "\n";
                 return;
             }
         }
@@ -114,19 +103,18 @@ public:
     }
 };
 
-// ---------------- Main (menu driven) ----------------
 int main() {
     AmbulanceQueue q;
     int choice;
 
     do {
         cout << "\n===== Emergency Ambulance Management System =====\n"
-             << "1. Add ambulance request\n"
-             << "2. Process highest-priority request\n"
-             << "3. Display pending requests\n"
-             << "4. Search ambulance by ID\n"
-             << "5. Exit\n"
-             << "Enter choice: ";
+            << "1. Add ambulance request\n"
+            << "2. Process highest-priority request\n"
+            << "3. Display pending requests\n"
+            << "4. Search ambulance by ID\n"
+            << "5. Exit\n"
+            << "Enter choice: ";
         if (!(cin >> choice)) break;
 
         switch (choice) {

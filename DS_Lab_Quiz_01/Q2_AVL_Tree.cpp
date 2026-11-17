@@ -1,8 +1,6 @@
 #include <iostream>
 #include <algorithm>
 using namespace std;
-
-// ---------------- Node ----------------
 class Node {
 public:
     int regNo;
@@ -16,8 +14,6 @@ public:
         left = right = nullptr;
     }
 };
-
-// ---------------- AVL Tree ----------------
 class AVLTree {
 private:
     Node* root;
@@ -31,8 +27,6 @@ private:
     void updateHeight(Node* n) {
         n->height = 1 + max(height(n->left), height(n->right));
     }
-
-    // Right rotation (LL case)
     Node* rotateRight(Node* y) {
         Node* x = y->left;
         Node* T2 = x->right;
@@ -43,7 +37,6 @@ private:
         return x;
     }
 
-    // Left rotation (RR case)
     Node* rotateLeft(Node* x) {
         Node* y = x->right;
         Node* T2 = y->left;
@@ -60,34 +53,27 @@ private:
         if (key < node->regNo)       node->left  = insert(node->left, key);
         else if (key > node->regNo)  node->right = insert(node->right, key);
         else { cout << "Duplicate " << key << " ignored.\n"; return node; }
-
-        // 2. Update height
         updateHeight(node);
 
-        // 3. Check balance
         int bf = balanceFactor(node);
 
-        // Left-Left
         if (bf > 1 && key < node->left->regNo) {
             cout << "  [Imbalance at " << node->regNo << "] Left-Left case -> Right Rotation\n";
             return rotateRight(node);
         }
-        // Right-Right
         if (bf < -1 && key > node->right->regNo) {
             cout << "  [Imbalance at " << node->regNo << "] Right-Right case -> Left Rotation\n";
             return rotateLeft(node);
         }
-        // Left-Right
         if (bf > 1 && key > node->left->regNo) {
             cout << "  [Imbalance at " << node->regNo << "] Left-Right case -> Left Rotation on "
-                 << node->left->regNo << ", then Right Rotation on " << node->regNo << "\n";
+                << node->left->regNo << ", then Right Rotation on " << node->regNo << "\n";
             node->left = rotateLeft(node->left);
             return rotateRight(node);
         }
-        // Right-Left
         if (bf < -1 && key < node->right->regNo) {
             cout << "  [Imbalance at " << node->regNo << "] Right-Left case -> Right Rotation on "
-                 << node->right->regNo << ", then Left Rotation on " << node->regNo << "\n";
+                << node->right->regNo << ", then Left Rotation on " << node->regNo << "\n";
             node->right = rotateRight(node->right);
             return rotateLeft(node);
         }
@@ -101,16 +87,14 @@ private:
         inorder(n->right);
     }
 
-    // Prints height and balance factor of each node (in-order)
     void printDetails(Node* n) {
         if (!n) return;
         printDetails(n->left);
         cout << "Node " << n->regNo << "\t| Height = " << n->height
-             << "\t| Balance Factor = " << balanceFactor(n) << "\n";
+            << "\t| Balance Factor = " << balanceFactor(n) << "\n";
         printDetails(n->right);
     }
 
-    // Sideways tree view (right child on top)
     void printTree(Node* n, int space) {
         if (!n) return;
         space += 6;
