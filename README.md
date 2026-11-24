@@ -18,48 +18,83 @@ Each lab is organized into a separate directory, with individual `.cpp` source f
 
 ```text
 data_structure_lab/
-│
-├── Lab_02_array/
-│   ├── Task_01.cpp
-│   ├── Task_02.1.cpp
-│   ├── Task_03.1.cpp
-│   └── ...
-│
-├── Lab_03/
-│   ├── Task1_StudentMarks.cpp
-│   ├── Task2_ParkingManagement.cpp
-│   ├── Task3_MatrixOutput.cpp
-│   ├── Task4_HospitalBedManagement.cpp
-│   ├── Task5_ComputerLabManagement.cpp
-│   └── Task6_3DArraySearch.cpp
-│
-├── Lab_04_LinkList/
-│   ├── Task1_Student_Registration.cpp
-│   ├── Task2_Hospital_Patient_Queue.cpp
-│   └── Task3_Online_Shopping_Cart.cpp
-│
-├── Lab_05_Doubly_LinkedList/
-│   ├── Task1_Browser_History.cpp
-│   ├── Task2_Image_Gallery.cpp
-│   ├── Task3_Game_Player_Turns.cpp
-│   └── Task4_Music_Playlist.cpp
-│
-├── Lab_06_stacks/
-│   ├── Task1_Browser_Back_History.cpp
-│   ├── Task2_Undo_Text_Editor.cpp
-│   ├── Task3_Hospital_Emergency_Requests.cpp
-│   └── Task4_Restaurant_Order_Processing.cpp
-│
-├── Lab_XX_Topic/        (future labs follow the same pattern)
-│
-└── README.md
+|
+|-- Lab_02_array/                 (Arrays - 20 task files)
+|   |-- Task_01.cpp
+|   |-- Task_02.1.cpp
+|   |-- Task_1.2.cpp
+|   `-- ...
+|
+|-- Lab_03/                       (Multidimensional Arrays)
+|   |-- Task1_StudentMarks.cpp
+|   |-- Task2_ParkingManagement.cpp
+|   |-- Task3_MatrixOutput.cpp
+|   |-- Task4_HospitalBedManagement.cpp
+|   |-- Task5_ComputerLabManagement.cpp
+|   `-- Task6_3DArraySearch.cpp
+|
+|-- Lab_04_LinkList/              (Singly Linked Lists)
+|   |-- Task1_Student_Registration.cpp
+|   |-- Task2_Hospital_Patient_Queue.cpp
+|   `-- Task3_Online_Shopping_Cart.cpp
+|
+|-- Lab_05_Doubly_LinkedList/     (Doubly Linked Lists)
+|   |-- Task_1_Browser_History.cpp
+|   |-- Task _2_Image_Gallery.cpp
+|   |-- Task _3_Game_Player_Turns.cpp
+|   `-- Task _4_Music Playlist.cpp
+|
+|-- Lab_06_Stacks/                (Stacks)
+|   |-- Task1_Browser_Back_History.cpp
+|   |-- Task2_Undo_Text_Editor.cpp
+|   |-- Task3_Hospital_Emergency_Requests.cpp
+|   `-- Task4_Restaurant_Order_Processing.cpp
+|
+|-- Lab_07_queues/                (Queues)
+|   |-- Task1_BankQueue.cpp
+|   |-- Task2_PacketCircularQueue.cpp
+|   |-- Task3_HospitalPriorityQueue.cpp
+|   `-- Task4_TrainStationDeque.cpp
+|
+|-- Lab_08_Tree/                  (Trees - Part 1)
+|   |-- task1_department_hierarchy.cpp
+|   |-- task2_shopping_bfs.cpp
+|   |-- task3_file_explorer_dfs.cpp
+|   `-- task4_hospital_avl.cpp
+|
+|-- Lab_08_Trees/                 (Trees - Part 2)
+|   |-- Task1_Staff_Management.cpp
+|   `-- Task2_Hospital_Inventory.cpp
+|
+|-- Lab_09_Heap/                  (Heap and Heap Sort)
+|   |-- Task1_StudentMeritRanking.cpp
+|   |-- Task2_HospitalEmergency.cpp
+|   |-- Task3_OrderHeapSort.cpp
+|   `-- Task4_MedicineExpiry.cpp
+|
+|-- Assignment_01/                (Assignment)
+|   |-- Q1_Flight_BST.cpp
+|   `-- Q2_Emergency_AVL.cpp
+|
+|-- DS_Lab_Quiz_01/               (Lab Quiz)
+|   |-- Q1_Ambulance_PriorityQueue.cpp
+|   `-- Q2_AVL_Tree.cpp
+|
+|-- Data Structures practice/     (Extra practice programs)
+|   |-- Diagonal_Matrix_to_1D.cpp
+|   |-- Lower_Triangular_Matrix_to_1D.cpp
+|   |-- Tri_Diagonal_Matrix_to_1D.cpp
+|   |-- Sparse.cpp
+|   `-- ...
+|
+`-- README.md
 ```
 
 ---
 
 ## Labs Overview
 
-### Lab 02 — Arrays
+### Lab 02 - Arrays
 
 This lab focuses on fundamental operations and problem-solving using arrays.
 
@@ -74,7 +109,7 @@ Topics include:
 
 ---
 
-### Lab 03 — Multidimensional Arrays & Applications
+### Lab 03 - Multidimensional Arrays & Applications
 
 This lab applies arrays and multidimensional arrays to practical programming scenarios.
 
@@ -91,7 +126,7 @@ These tasks demonstrate how arrays can be used to represent and process structur
 
 ---
 
-### Lab 04 — Singly Linked Lists
+### Lab 04 - Singly Linked Lists
 
 This lab introduces dynamic data structures using singly linked lists.
 
@@ -115,7 +150,7 @@ Concepts practiced include:
 
 ---
 
-### Lab 05 — Doubly Linked Lists
+### Lab 05 - Doubly Linked Lists
 
 This lab introduces doubly linked lists, where each node maintains links to both the previous and next nodes.
 
@@ -139,7 +174,7 @@ Concepts practiced include:
 
 ---
 
-### Lab 06 — Stacks
+### Lab 06 - Stacks
 
 This lab introduces the stack data structure, which follows the **LIFO (Last In, First Out)** principle. All programs are written in C++ using OOP and cover both array-based and linked-list-based stacks.
 
@@ -165,7 +200,103 @@ Concepts practiced include:
 * `top` index and `top` pointer
 * Dynamic memory allocation and deallocation (`new` / `delete`)
 * Destructors for freeing remaining nodes
-* Real-world applications: browser back button, undo/redo, emergency request handling, order processing
+
+---
+
+### Lab 07 - Queues
+
+This lab introduces the queue data structure, which follows the **FIFO (First In, First Out)** principle, along with its circular, priority and double-ended variants.
+
+Tasks include:
+
+* Bank Queue
+* Packet Circular Queue
+* Hospital Priority Queue
+* Train Station Deque
+
+Concepts practiced include:
+
+* FIFO principle
+* `enqueue`, `dequeue`, `front`, `display` and `isEmpty` operations
+* Circular queue and wrap-around indexing
+* Priority queue
+* Double-ended queue (deque)
+* Overflow and underflow handling
+
+---
+
+### Lab 08 - Trees
+
+This lab introduces tree data structures and their traversal and balancing techniques. The work is split across two folders: `Lab_08_Tree` and `Lab_08_Trees`.
+
+**`Lab_08_Tree`**
+
+* Department Hierarchy
+* Shopping (Breadth-First Search)
+* File Explorer (Depth-First Search)
+* Hospital AVL Tree
+
+**`Lab_08_Trees`**
+
+* Staff Management
+* Hospital Inventory
+
+Concepts practiced include:
+
+* Tree nodes and pointers
+* Tree hierarchy
+* Breadth-First Search (BFS) / level-order traversal
+* Depth-First Search (DFS)
+* Binary Search Tree operations
+* AVL Tree balancing and rotations
+
+---
+
+### Lab 09 - Heap and Heap Sort
+
+This lab implements heaps using C++ classes, objects, binary tree nodes and pointers. Every task uses **Heapify Up** during insertion and **Heapify Down** during deletion.
+
+Tasks include:
+
+* University Student Merit Ranking (Max Heap)
+* Hospital Emergency Management System (Max Heap)
+* Online Shopping Order Sorting (Heap Sort)
+* Hospital Medicine Expiry Management (Min Heap, `YYYYMMDD` dates)
+
+Concepts practiced include:
+
+* Complete binary tree built from linked nodes (`left`, `right`, `parent` pointers)
+* Max Heap and Min Heap
+* Heapify Up (insertion) and Heapify Down (deletion)
+* Level Order Traversal using a queue
+* Deleting the root (highest or lowest priority)
+* Heap Sort using repeated root deletion
+* Priority-based real-world applications
+
+---
+
+### Assignment 01
+
+* Q1 - Flight management using a Binary Search Tree (BST)
+* Q2 - Emergency management using an AVL Tree
+
+---
+
+### DS Lab Quiz 01
+
+* Q1 - Ambulance Priority Queue
+* Q2 - AVL Tree
+
+---
+
+### Data Structures Practice
+
+Extra practice programs outside the weekly labs, including:
+
+* Diagonal, lower triangular, upper triangular, symmetric and tri-diagonal matrix to 1D array mapping
+* Row mapping and matrix to 1D conversion
+* Sparse matrices (row-column-value and linked list representations)
+* Linked list practice
 
 ---
 
@@ -188,6 +319,7 @@ Concepts practiced include:
 * Matrix operations
 * Searching multidimensional data
 * Representing structured information
+* Special matrices and sparse matrices stored in compact 1D form
 
 ### Searching
 
@@ -227,6 +359,29 @@ Concepts practiced include:
 * Overflow and underflow conditions
 * Memory cleanup when popping nodes and in destructors
 
+### Queues
+
+* FIFO (First In, First Out) principle
+* Linear and circular queues
+* Priority queues
+* Double-ended queues (deque)
+* `enqueue` and `dequeue` operations
+
+### Trees
+
+* Tree hierarchy and node relationships
+* Binary Search Trees (BST)
+* AVL Trees and rotations
+* Breadth-First Search (BFS) and Depth-First Search (DFS)
+
+### Heaps
+
+* Max Heap and Min Heap
+* Heapify Up and Heapify Down
+* Level Order Traversal
+* Heap Sort
+* Priority-based processing
+
 ### C++ Programming
 
 * Variables and data types
@@ -249,19 +404,24 @@ The assignments demonstrate how data structures can be applied to practical scen
 
 * Student record management
 * Student marks management
+* Student merit ranking
 * Hospital bed management
 * Hospital patient management
+* Hospital emergency handling and patient priority
+* Hospital inventory and medicine expiry management
 * Parking management
 * Computer lab management
-* Online shopping carts
-* Browser history
+* Online shopping carts and order sorting
+* Browser history and browser back button
 * Image galleries
 * Game player turns
 * Music playlists
-* Browser back button
 * Undo operations in a text editor
-* Hospital emergency request handling
 * Restaurant order processing
+* Bank queue and network packet handling
+* Train station management
+* Department hierarchy and file explorer
+* Flight and ambulance management
 
 These applications help connect theoretical data-structure concepts with real programming problems.
 
@@ -283,52 +443,38 @@ Before running the programs, make sure you have:
 
 ## Compile and Run on Windows
 
-### Lab 02
-
-For example:
+The same command pattern works for every lab:
 
 ```powershell
-g++ Lab_02_array/Task_01.cpp -o task01.exe
-.\task01.exe
-```
-
-### Lab 03
-
-For example:
-
-```powershell
-g++ Lab_03/Task1_StudentMarks.cpp -o task.exe
+g++ <folder>/<file>.cpp -o task.exe
 .\task.exe
 ```
 
-### Lab 04 — Singly Linked List
-
-For example:
+### Examples
 
 ```powershell
-g++ Lab_04_LinkList/Task1_Student_Registration.cpp -o task.exe
+# Lab 02 - Arrays
+g++ Lab_02_array/Task_01.cpp -o task.exe
+.\task.exe
+
+# Lab 06 - Stacks
+g++ Lab_06_Stacks/Task1_Browser_Back_History.cpp -o task.exe
+.\task.exe
+
+# Lab 07 - Queues
+g++ Lab_07_queues/Task1_BankQueue.cpp -o task.exe
+.\task.exe
+
+# Lab 08 - Trees
+g++ Lab_08_Tree/task4_hospital_avl.cpp -o task.exe
+.\task.exe
+
+# Lab 09 - Heap
+g++ Lab_09_Heap/Task1_StudentMeritRanking.cpp -o task.exe
 .\task.exe
 ```
 
-### Lab 05 — Doubly Linked List
-
-For example:
-
-```powershell
-g++ Lab_05_Doubly_LinkedList/Task1_Browser_History.cpp -o task.exe
-.\task.exe
-```
-
-### Lab 06 — Stacks
-
-For example:
-
-```powershell
-g++ Lab_06_stacks/Task1_Browser_Back_History.cpp -o task.exe
-.\task.exe
-```
-
-> Replace the folder and source filename with the `.cpp` file you want to compile and execute. The same command pattern works for every lab.
+> Replace the folder and source filename with the `.cpp` file you want to compile and execute. If a path contains spaces (for example `Data Structures practice/` or `Task _4_Music Playlist.cpp`), wrap it in quotes.
 
 ---
 
@@ -337,7 +483,7 @@ g++ Lab_06_stacks/Task1_Browser_Back_History.cpp -o task.exe
 You can also specify a C++ standard when compiling:
 
 ```powershell
-g++ -std=c++17 Lab_04_LinkList/Task1_Student_Registration.cpp -o task.exe
+g++ -std=c++17 Lab_09_Heap/Task3_OrderHeapSort.cpp -o task.exe
 .\task.exe
 ```
 
@@ -352,7 +498,8 @@ The main objectives of this lab repository are to:
 * Understand the fundamentals of data structures.
 * Implement arrays and multidimensional arrays in C++.
 * Understand and implement singly and doubly linked lists.
-* Understand and implement stacks using arrays and linked lists.
+* Understand and implement stacks and queues using arrays and linked lists.
+* Understand and implement trees, AVL trees and heaps.
 * Learn how pointers are used in dynamic data structures.
 * Practice dynamic memory allocation and deallocation.
 * Develop logical thinking and problem-solving skills.
